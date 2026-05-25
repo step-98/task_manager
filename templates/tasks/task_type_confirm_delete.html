@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Delete Task type</h1>
+  <p><i>Do you really want to delete the task type: {{ task_type }}?</i></p>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete" class="btn btn-danger">
+    <a class="button" href="{% url 'tasks:task-type-list' %}">Cancel</a>
+  </form>
+{% endblock %}
