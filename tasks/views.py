@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -130,6 +130,13 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Worker
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        worker = self.object
+        context["completed_tasks"] = worker.tasks.filter(is_completed=True)
+        context["uncompleted_tasks"] = worker.tasks.filter(is_completed=False)
+        return context
+
 
 class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Worker
@@ -175,3 +182,15 @@ class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Task
     success_url = reverse_lazy("tasks:task-list")
+
+
+@login_required
+def toggle_assign_to_task(request, pk):
+    if request.method == "POST":
+        worker = request.user
+        task = get_object_or_404(Task, id=pk)
+        if task in worker.tasks.all():
+            worker.tasks.remove(pk)
+        else:
+            worker.tasks.add(pk)
+        return redirect("tasks:task-detail", pk=pk)
