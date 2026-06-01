@@ -33,7 +33,7 @@
       </form>
       {% if user.is_authenticated %}
         <div style="color: #ffffff">
-          {{ user.username }}
+          <a href="{{ user.get_absolute_url }}" class="text-decoration-none text-white">{{ user.username }} </a>
         </div>
         <div class="text-end ms-4">
           <form action="{% url 'logout'%}" method="post" class="d-inline">
