@@ -2,12 +2,13 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from tasks.models import TaskType, Position, Task, Worker
+from tasks.models import TaskType, Position, Task
 
 TASK_TYPE_URL = reverse("tasks:task-type-list")
 POSITION_URL = reverse("tasks:position-list")
 WORKER_URL = reverse("tasks:worker-list")
 TASK_URL = reverse("tasks:task-list")
+
 
 class PublicTests(TestCase):
     def test_login_required_task_type(self):
@@ -26,6 +27,7 @@ class PublicTests(TestCase):
         response = self.client.get(TASK_URL)
         self.assertNotEqual(response.status_code, 200)
 
+
 class PrivateTaskTypeTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
@@ -40,7 +42,9 @@ class PrivateTaskTypeTests(TestCase):
         response = self.client.get(TASK_TYPE_URL)
         self.assertEqual(response.status_code, 200)
         task_types = TaskType.objects.all()
-        self.assertEqual(list(response.context["task_type_list"]), list(task_types))
+        self.assertEqual(
+            list(response.context["task_type_list"]), list(task_types)
+        )
         self.assertTemplateUsed(response, "tasks/task_type_list.html")
 
     def test_search_task_type(self):
@@ -63,7 +67,9 @@ class PrivatePositionTests(TestCase):
         response = self.client.get(POSITION_URL)
         self.assertEqual(response.status_code, 200)
         positions = Position.objects.all()
-        self.assertEqual(list(response.context["position_list"]), list(positions))
+        self.assertEqual(
+            list(response.context["position_list"]), list(positions)
+        )
         self.assertTemplateUsed(response, "tasks/position_list.html")
 
     def test_search_position(self):

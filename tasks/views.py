@@ -5,7 +5,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
-from tasks.forms import WorkerCreationForm, TaskForm, TaskTypeSearchForm, PositionSearchForm, TaskSearchForm, WorkerSearchForm
+from tasks.forms import (
+    WorkerCreationForm,
+    TaskForm,
+    TaskTypeSearchForm,
+    PositionSearchForm,
+    TaskSearchForm,
+    WorkerSearchForm
+)
 from tasks.models import TaskType, Position, Task, Worker
 
 
@@ -33,6 +40,7 @@ def index(request):
         "tasks/index.html",
         context=context
     )
+
 
 class TaskTypeListView(LoginRequiredMixin, generic.ListView):
     model = TaskType
@@ -89,10 +97,12 @@ class PositionListView(LoginRequiredMixin, generic.ListView):
             return queryset.filter(name__icontains=form.cleaned_data["name"])
         return queryset
 
+
 class PositionCreateView(LoginRequiredMixin, generic.CreateView):
     model = Position
     fields = "__all__"
     success_url = reverse_lazy("tasks:position-list")
+
 
 class PositionUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Position
@@ -119,13 +129,16 @@ class WorkerListView(LoginRequiredMixin, generic.ListView):
         queryset = get_user_model().objects.all()
         form = WorkerSearchForm(self.request.GET)
         if form.is_valid():
-            return queryset.filter(username__icontains=form.cleaned_data["name"])
+            return queryset.filter(
+                username__icontains=form.cleaned_data["name"]
+            )
         return queryset
 
 
 class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
     model = Worker
     form_class = WorkerCreationForm
+
 
 class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Worker
@@ -146,6 +159,8 @@ class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
 class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Worker
     success_url = reverse_lazy("tasks:worker-list")
+
+
 class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     paginate_by = 5
@@ -162,6 +177,7 @@ class TaskListView(LoginRequiredMixin, generic.ListView):
         if form.is_valid():
             return queryset.filter(name__icontains=form.cleaned_data["name"])
         return queryset
+
 
 class TaskDetailView(LoginRequiredMixin, generic.DetailView):
     model = Task
@@ -184,9 +200,8 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("tasks:task-list")
 
 
-@login_required
-def toggle_assign_to_task(request, pk):
-    if request.method == "POST":
+class ToggleAssignToTaskView(LoginRequiredMixin, generic.View):
+    def post(self, request, pk):
         worker = request.user
         task = get_object_or_404(Task, id=pk)
         if task in worker.tasks.all():

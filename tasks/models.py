@@ -41,6 +41,7 @@ class Worker(AbstractUser):
     def get_absolute_url(self):
         return reverse("tasks:worker-detail", kwargs={"pk": self.pk})
 
+
 class Task(models.Model):
     class PriorityChoices(models.TextChoices):
         LOW = "LOW", "Low"
