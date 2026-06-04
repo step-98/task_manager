@@ -16,9 +16,14 @@ venv\Scripts\activate      # Windows
 pip install -r requirements.txt
 4. Apply database migrations
 python manage.py migrate
-5. Run the development server
+5. Load sample data (optional)
+python manage.py loaddata task_manager_db_data.json
+6. Run the development server
 python manage.py runserver
 
+## 🔑 Demo Credentials
+Username | `admin.user`      |
+Password | `1qazcde3` |
 
 ## ✨ Features
 
