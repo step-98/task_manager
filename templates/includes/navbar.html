@@ -1,0 +1,52 @@
+{% load static %}
+<div class="container position-sticky z-index-sticky top-0" style="max-width: 100%; padding: 0;">
+  <header id="custom-navbar" class="p-3" style="background-color: #2b2b2b !important;">
+  <div class="container">
+    <div
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+      >
+        <img src="{% static 'css/task_icon.png' %}" alt="Task Manager logo" width="32" height="32" class="me-2">
+      </a>
+      <ul
+        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+      >
+        <li><a href="{% url 'tasks:index' %}" class="nav-link px-2 text-white">Home</a></li>
+        <li><a href="{% url 'tasks:task-list' %}" class="nav-link px-2 text-white">Tasks</a></li>
+        <li><a href="{% url 'tasks:worker-list' %}" class="nav-link px-2 text-white">Workers</a></li>
+        <li><a href="{% url 'tasks:task-type-list' %}" class="nav-link px-2 text-white">Task types</a></li>
+        <li><a href="{% url 'tasks:position-list' %}" class="nav-link px-2 text-white">Positions</a></li>
+      </ul>
+      <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-3" role="search" method="get" action="{{ request.path }}">
+        <input
+          type="search"
+          name="name"
+          value="{{ request.GET.name }}"
+          class="form-control form-control-dark"
+          placeholder="Search..."
+          aria-label="Search"
+          style="background-color: #3d3d3d; color: #ffffff; padding-left: 12px"
+        />
+      </form>
+      {% if user.is_authenticated %}
+        <div style="color: #ffffff">
+          <a href="{{ user.get_absolute_url }}" class="text-decoration-none text-white">{{ user.username }} </a>
+        </div>
+        <div class="text-end ms-4">
+          <form action="{% url 'logout'%}" method="post" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-warning">Logout</button>
+          </form>
+        </div>
+      {% else %}
+        <div class="text-end ms-4">
+            <a href="{% url 'login'%}?next={{request.path}}" class="btn btn-outline-light me-2">Login</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</header>
+</div>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h3>Task: {{ task.name }}. Priority: {{ task.priority}}</h3>
+  <h1>
+    Workers
+    <form action="{% url 'tasks:toggle-assign-to-task' pk=task.id %}" method="post">
+      {% csrf_token %}
+      {% if task in request.user.tasks.all %}
+        <button type="submit" class="btn btn-danger">
+          Delete me from this task
+        </button>
+        {% else %}
+        <button type="submit" class="btn btn-success">
+          Add me to this task
+        </button>
+      {% endif %}
+    </form>
+  </h1>
+  <hr>
+  <ul>
+  {% for worker in task.assignees.all %}
+    <li>{{ worker.username }} ({{ worker.first_name }} {{ worker.last_name }})</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

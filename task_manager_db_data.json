@@ -1,0 +1,337 @@
+[
+  {
+    "model": "tasks.tasktype",
+    "pk": 1,
+    "fields": {
+      "name": "Bug"
+    }
+  },
+  {
+    "model": "tasks.tasktype",
+    "pk": 2,
+    "fields": {
+      "name": "New feature"
+    }
+  },
+  {
+    "model": "tasks.tasktype",
+    "pk": 3,
+    "fields": {
+      "name": "QA"
+    }
+  },
+  {
+    "model": "tasks.tasktype",
+    "pk": 4,
+    "fields": {
+      "name": "Breaking change"
+    }
+  },
+  {
+    "model": "tasks.position",
+    "pk": 1,
+    "fields": {
+      "name": "Developer"
+    }
+  },
+  {
+    "model": "tasks.position",
+    "pk": 2,
+    "fields": {
+      "name": "Project Manager"
+    }
+  },
+  {
+    "model": "tasks.position",
+    "pk": 3,
+    "fields": {
+      "name": "QA"
+    }
+  },
+  {
+    "model": "tasks.position",
+    "pk": 4,
+    "fields": {
+      "name": "Designer"
+    }
+  },
+  {
+    "model": "tasks.position",
+    "pk": 5,
+    "fields": {
+      "name": "DevOps"
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$6uM28XWOFX6ewyloJzjqmt$L+ZhofPylneoaL2iZS4sZu4ZMUNb4oIevfAdzOMn/eE=",
+      "is_superuser": true,
+      "username": "admin.user",
+      "first_name": "Admin",
+      "last_name": "User",
+      "email": "admin.user@task.com",
+      "is_staff": true,
+      "position": 1
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "is_superuser": false,
+      "username": "joyce.byers",
+      "first_name": "Joyce",
+      "last_name": "Byers",
+      "email": "joyce.byers@task.com",
+      "is_staff": false,
+      "position": 2
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$QtPol3T7x9quBj4BnbnVwW$UwT4kihkRfSvQEWEeuqVKwMgis2ikKVZfJDBcQMvOKY=",
+      "is_superuser": false,
+      "username": "jim.hopper",
+      "first_name": "Jim",
+      "last_name": "Hopper",
+      "email": "jim.hopper@task.com",
+      "is_staff": false,
+      "position": 3
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "is_superuser": false,
+      "username": "jonathan.byers",
+      "first_name": "Jonathan",
+      "last_name": "Byers",
+      "email": "jonathan.byers@task.com",
+      "is_staff": false,
+      "position": 4
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "is_superuser": false,
+      "username": "dustin.henderson",
+      "first_name": "Dustin",
+      "last_name": "Henderson",
+      "email": "dustin.henderson@task.com",
+      "is_staff": false,
+      "position": 5
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "is_superuser": false,
+      "username": "steve.harrington",
+      "first_name": "Steve",
+      "last_name": "Harrington",
+      "email": "steve.harrington@task.com",
+      "is_staff": false,
+      "position": 1
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "is_superuser": false,
+      "username": "robin.buckley",
+      "first_name": "Robin",
+      "last_name": "Buckley",
+      "email": "robin.buckley@task.com",
+      "is_staff": false,
+      "position": 3
+    }
+  },
+  {
+    "model": "tasks.worker",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "is_superuser": false,
+      "username": "nancy.wheeler",
+      "first_name": "Nancy",
+      "last_name": "Wheeler",
+      "email": "nancy.wheeler@task.com",
+      "is_staff": false,
+      "position": 2
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 1,
+    "fields": {
+      "name": "Fix Dashboard",
+      "description": "Fix all bugs on dashboard",
+      "deadline": "2026-05-29",
+      "is_completed": false,
+      "priority": "LOW",
+      "task_type": 1,
+      "assignees": [
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 2,
+    "fields": {
+      "name": "Add sign in",
+      "description": "Add sign in with Google button",
+      "deadline": "2026-05-20",
+      "is_completed": false,
+      "priority": "HIGH",
+      "task_type": 2,
+      "assignees": [
+        1,
+        2,
+        5
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 3,
+    "fields": {
+      "name": "Implement Dark Mode",
+      "description": "Create global state for theme switching and style UI elements",
+      "deadline": "2026-06-15",
+      "is_completed": true,
+      "priority": "MEDIUM",
+      "task_type": 2,
+      "assignees": [
+        4,
+        6
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 4,
+    "fields": {
+      "name": "Set up CI/CD pipeline",
+      "description": "Configure GitHub Actions to automatically run tests and deploy to staging",
+      "deadline": "2026-05-25",
+      "is_completed": false,
+      "priority": "HIGH",
+      "task_type": 2,
+      "assignees": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 5,
+    "fields": {
+      "name": "Write unit tests for Auth",
+      "description": "Cover OAuth login flows, token validation and session timeouts with unit tests",
+      "deadline": "2026-06-01",
+      "is_completed": false,
+      "priority": "MEDIUM",
+      "task_type": 3,
+      "assignees": [
+        3,
+        7
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 6,
+    "fields": {
+      "name": "Design Landing Page",
+      "description": "Prepare Figma mockups for the new interactive landing page",
+      "deadline": "2026-05-15",
+      "is_completed": true,
+      "priority": "LOW",
+      "task_type": 2,
+      "assignees": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 7,
+    "fields": {
+      "name": "Fix Critical Memory Leak",
+      "description": "Memory leak detected in celery background tasks when parsing large XML files",
+      "deadline": "2026-05-19",
+      "is_completed": false,
+      "priority": "URGENT",
+      "task_type": 1,
+      "assignees": [
+        1,
+        5
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 8,
+    "fields": {
+      "name": "Upgrade Database Schema",
+      "description": "Prepare and run migrations for upgrading PostgreSQL to the latest major version",
+      "deadline": "2026-06-10",
+      "is_completed": false,
+      "priority": "HIGH",
+      "task_type": 4,
+      "assignees": [
+        5,
+        6
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 9,
+    "fields": {
+      "name": "Review REST API docs",
+      "description": "Verify Swagger / OpenAPI specifications match actual endpoint payloads",
+      "deadline": "2026-05-22",
+      "is_completed": true,
+      "priority": "LOW",
+      "task_type": 3,
+      "assignees": [
+        2,
+        8
+      ]
+    }
+  },
+  {
+    "model": "tasks.task",
+    "pk": 10,
+    "fields": {
+      "name": "Refactor Notification System",
+      "description": "Switch from synchronous email dispatching to task queues using Redis",
+      "deadline": "2026-06-20",
+      "is_completed": false,
+      "priority": "MEDIUM",
+      "task_type": 4,
+      "assignees": [
+        1,
+        6,
+        8
+      ]
+    }
+  }
+]
