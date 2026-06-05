@@ -2,6 +2,10 @@
 
 A robust and responsive web application built with Python and Django, designed to streamline team workflow, assign roles, allocate tasks, and track progress in one convenient workspace.
 
+## 🌐 Demo
+
+[Live Demo](https://task-manager-9xxj.onrender.com)
+
 ## Installation
 
 🚀 Installation & Setup
@@ -20,6 +24,7 @@ python manage.py migrate
 python manage.py loaddata task_manager_db_data.json
 6. Run the development server
 python manage.py runserver
+
 
 ## 🔑 Demo Credentials
 Username | `admin.user`      |
